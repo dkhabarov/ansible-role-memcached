@@ -1,0 +1,12 @@
+---
+memcached_state: present
+memcached_daemon_enable: yes
+memcached_logfile: /var/log/memcached.log
+memcached_verbose: no
+memcached_memory_size: 64
+memcached_listen_port: 11211
+memcached_run_as_user: memcache
+memcached_listen_addr: 127.0.0.1
+memcached_limit_incoming_connections: 1024
+memcached_lockdown_paged_memory: no
+memcached_maximize_core_file_limit: no

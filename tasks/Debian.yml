@@ -1,0 +1,5 @@
+---
+- name: install memcached
+  apt:
+    pkg: memcached
+    state: "{{ memcached_state }}"

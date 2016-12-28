@@ -1,0 +1,22 @@
+---
+- include: Debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: install memcached.conf
+  template:
+    src: etc/memcached.conf.j2
+    dest: /etc/memcached.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - service memcached restart
+  tags: install_memcached_conf
+  when: memcached_state == 'present'
+
+- name: remove memcached.conf
+  file:
+    path: /etc/memcached.conf
+    state: absent
+  tags: remove_memcached_conf
+  when: memcached_state == 'absent'

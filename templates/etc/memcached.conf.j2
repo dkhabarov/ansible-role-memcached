@@ -1,0 +1,49 @@
+# {{ ansible_managed }}
+
+{%if memcached_daemon_enable is defined and memcached_daemon_enable %}
+-d
+{%endif%}
+
+{% if memcached_logfile is defined %}
+logfile {{memcached_logfile}}
+{% endif %}
+
+{% if memcached_verbose is defined and memcached_verbose %}
+-v
+{% endif %}
+
+{% if memcached_more_verbose is defined and memcached_more_verbose %}
+-vv
+{% endif %}
+
+{% if memcached_memory_size is defined %}
+-m {{memcached_memory_size}}
+{% endif %}
+
+{% if memcached_listen_port is defined %}
+-p {{memcached_listen_port}}
+{% endif %} 
+
+{%if memcached_run_as_user is defined %}
+-u {{memcached_run_as_user}}
+{%endif%}
+
+{%if memcached_listen_addr is defined %}
+-l {{memcached_listen_addr}}
+{%endif%}
+
+{%if memcached_limit_incoming_connections is defined %}
+-c {{memcached_limit_incoming_connections}}
+{%endif%}
+
+{%if memcached_lockdown_paged_memory is defined and memcached_lockdown_paged_memory %}
+-k
+{%endif%}
+
+{%if memcached_error_when_memory_exhausted is defined and memcached_error_when_memory_exhausted %}
+-M
+{%endif%}
+
+{%if memcached_maximize_core_file_limit is defined and memcached_maximize_core_file_limit %}
+-r
+{%endif%}
